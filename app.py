@@ -5,7 +5,7 @@ import json
 import sqlite3
 from pathlib import Path
 
-app = FastAPI(title="Resume API", version="1.2.0")
+app = FastAPI(title="Resume API", version="1.3.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -16,7 +16,7 @@ app.add_middleware(
 )
 
 RESUME_PATH = Path(__file__).parent / "resume.json"
-DB_PATH = Path(__file__).parent / "metrics.db"
+DB_PATH = Path("/var/lib/resume-api/metrics.db")
 
 
 def load_resume() -> dict:
@@ -25,10 +25,19 @@ def load_resume() -> dict:
     return json.loads(RESUME_PATH.read_text(encoding="utf-8"))
 
 
-def inc_counter(key: str, amount: int = 1) -> None:
-    con = sqlite3.connect(DB_PATH)
+def _connect():
+    con = sqlite3.connect(DB_PATH, timeout=5)
     cur = con.cursor()
+    cur.execute("PRAGMA journal_mode=WAL;")
+    cur.execute("PRAGMA synchronous=NORMAL;")
     cur.execute("CREATE TABLE IF NOT EXISTS counters (key TEXT PRIMARY KEY, value INTEGER NOT NULL)")
+    con.commit()
+    return con
+
+
+def inc_counter(key: str, amount: int = 1) -> None:
+    con = _connect()
+    cur = con.cursor()
     cur.execute("INSERT OR IGNORE INTO counters(key, value) VALUES (?, 0)", (key,))
     cur.execute("UPDATE counters SET value = value + ? WHERE key = ?", (amount, key))
     con.commit()
@@ -36,7 +45,7 @@ def inc_counter(key: str, amount: int = 1) -> None:
 
 
 def get_counter(key: str) -> int:
-    con = sqlite3.connect(DB_PATH)
+    con = _connect()
     cur = con.cursor()
     cur.execute("SELECT value FROM counters WHERE key = ?", (key,))
     row = cur.fetchone()
@@ -53,7 +62,7 @@ def root(request: Request):
         "service": "resume-api",
         "name": b.get("name"),
         "label": b.get("label"),
-        "endpoints": ["/resume", "/resume.min", "/resume.txt", "/health", "/metrics"],
+        "endpoints": ["/resume", "/resume.min", "/resume.txt", "/health", "/metrics", "/visit"],
         "documentation": "https://docs.dealapiops.dev"
     }
 
