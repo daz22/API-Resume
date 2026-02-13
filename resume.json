@@ -1,0 +1,199 @@
+{
+  "basics": {
+    "name": "Dr. Jeffrey M. Deal",
+    "label": "Senior Information Security Engineer",
+    "email": "Jeff@n6networks.com",
+    "location": {
+      "city": "Middleburg",
+      "region": "FL",
+      "countryCode": "US"
+    },
+    "summary": "Cybersecurity professional with over 20 years of experience supporting Department of Defense and enterprise environments. Expertise in risk management, security engineering, network architecture, and governance frameworks including NIST, RMF, ISO 27001, and HIPAA."
+  },
+  "work": [
+    {
+      "name": "Teachers Insurance and Annuity Association (TIAA)",
+      "position": "Senior Information Security Engineer",
+      "location": "Jacksonville, FL",
+      "startDate": "2022-10",
+      "endDate": "",
+      "summary": "Enterprise endpoint security and network access control engineering.",
+      "highlights": [
+        "Enforce endpoint security policy across 50,000 devices in seven countries using Cisco ISE.",
+        "Lead engineer for device profiling and posturing using 802.1X, RADIUS, TACACS+, and network access control.",
+        "Deploy and maintain Gigamon Fabric network providing out-of-band traffic streams to security analytics tools."
+      ]
+    },
+    {
+      "name": "Naval Telecommunication Area Master Station Jacksonville",
+      "position": "Senior Network Security Engineer",
+      "location": "Jacksonville, FL",
+      "startDate": "2019-09",
+      "endDate": "2022-10",
+      "summary": "DoD RMF network security architecture and compliance enforcement.",
+      "highlights": [
+        "Enforced DoD RMF for DISA node point-of-presence network architecture supporting 130,000 military and government customers and 150 circuits.",
+        "Implemented STIG-based security controls for BGP, MPLS, VRF, and IGP routing across IPv4 and IPv6 deployments.",
+        "Conducted 150 cybersecurity spot checks and supported 37 cybersecurity workforce members with zero discrepancies."
+      ]
+    },
+    {
+      "name": "Office of the Chief of Naval Operations Det Point Mugu",
+      "position": "Senior Network Security Engineer",
+      "location": "Point Mugu, CA",
+      "startDate": "2016-06",
+      "endDate": "2019-08",
+      "summary": "Secure WAN architecture and inspection readiness.",
+      "highlights": [
+        "Designed and led installation of a 2.1 million dollar network using DMVPN connecting 22 sites across multiple service providers using Inter-AS MPLS VPN.",
+        "Passed three Cyber Security Inspections under Special Access Program requirements with a score of 98 out of 100.",
+        "Reduced latency and increased performance by 52 percent by streamlining troubleshooting and monitoring across LAN and WAN."
+      ]
+    },
+    {
+      "name": "Navy Region Southwest",
+      "position": "Network Engineer",
+      "location": "San Diego, CA",
+      "startDate": "2013-06",
+      "endDate": "2016-08",
+      "summary": "Enterprise routing and switching engineering.",
+      "highlights": [
+        "Deployed Cisco routing and switching infrastructure supporting RAPIDS across ten military installations, improving rapid identification by 22 percent.",
+        "Produced technical documentation and infrastructure designs, reducing incident response time by 15 percent.",
+        "Led lifecycle management and inventory process improvements, increasing network efficiency and production by 31 percent over two years."
+      ]
+    },
+    {
+      "name": "Naval Telecommunication Area Master Station Rota",
+      "position": "Network Security Administrator",
+      "location": "Rota, Spain",
+      "startDate": "2011-06",
+      "endDate": "2013-06",
+      "summary": "Operational network security and compliance support.",
+      "highlights": [
+        "Designed and led a network training range of 40 devices for 22 junior engineers teaching EIGRP, OSPF, MPLS, and BGP, increasing productivity by 44 percent.",
+        "Maintained and troubleshot 140 customer trunk links and provided networking services to fleet operational units.",
+        "Coordinated with the security manager to align infrastructure with NIST guidance, PCI-DSS, and HIPAA policies.",
+        "Prepared over 150 artifacts for the organization’s first Cyber Security Inspection resulting in a score of 96 out of 100."
+      ]
+    },
+    {
+      "name": "Naval Special Warfare Support Activity One",
+      "position": "Network Administrator",
+      "location": "San Diego, CA",
+      "startDate": "2007-10",
+      "endDate": "2011-06",
+      "summary": "Mission critical network administration and field support.",
+      "highlights": [
+        "Identified a firewall policy misconfiguration and led repair and deployment of five unattended ground surveillance systems supporting Operation Iraqi Freedom.",
+        "Planned and implemented routing and switching infrastructure supporting 1,500 assets using MPLS Layer 2 and Layer 3 VPN technologies.",
+        "Delivered 99.3 percent uptime and strong response time for clients forward deployed throughout the Iraqi region.",
+        "Led training events in LAN, IP telephony, WAN technologies, and wireless security."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "New York University Tandon School of Engineering",
+      "area": "Cybersecurity",
+      "studyType": "Master of Science",
+      "endDate": "2027-06"
+    },
+    {
+      "institution": "Colorado Technical University",
+      "area": "Cybersecurity and Information Assurance",
+      "studyType": "Doctor of Computer Science",
+      "endDate": "2021-06"
+    },
+    {
+      "institution": "Colorado Technical University",
+      "area": "Computer and Information Systems",
+      "studyType": "Master of Science",
+      "endDate": "2017-06"
+    },
+    {
+      "institution": "Colorado Technical University",
+      "area": "Information Technology and Network Management",
+      "studyType": "Bachelor of Science",
+      "endDate": "2014-06"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Security Platforms",
+      "keywords": [
+        "pfSense",
+        "FortiGate",
+        "Cisco ISE",
+        "Gigamon Fabric",
+        "Zscaler"
+      ]
+    },
+    {
+      "name": "Routing and WAN",
+      "keywords": [
+        "MPLS",
+        "DMVPN",
+        "BGP",
+        "OSPF",
+        "EIGRP",
+        "IS-IS",
+        "RIP",
+        "VRF",
+        "IPv4",
+        "IPv6",
+        "TCP/IP"
+      ]
+    },
+    {
+      "name": "Access Control",
+      "keywords": [
+        "802.1X",
+        "RADIUS",
+        "TACACS+",
+        "Network Access Control",
+        "Captive Portal"
+      ]
+    },
+    {
+      "name": "Frameworks and Compliance",
+      "keywords": [
+        "NIST",
+        "RMF",
+        "ISO 27001",
+        "HIPAA",
+        "STIG"
+      ]
+    },
+    {
+      "name": "Networking Tooling",
+      "keywords": [
+        "UniFi",
+        "Site-to-site VPN",
+        "Client VPN"
+      ]
+    },
+    {
+      "name": "Leadership",
+      "keywords": [
+        "Leadership",
+        "Mentoring",
+        "Training",
+        "Planning",
+        "Documentation",
+        "Oral Communication",
+        "Written Communication"
+      ]
+    }
+  ],
+  "certificates": [
+    { "name": "CISSP" },
+    { "name": "CCNA" },
+    { "name": "Security+" },
+    { "name": "Network+" },
+    { "name": "A+" },
+    { "name": "Green IT" },
+    { "name": "Zscaler Zero Trust Network Associate" },
+    { "name": "AWS Certified Cloud Practitioner" }
+  ]
+}

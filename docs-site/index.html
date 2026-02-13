@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Resume API Build Log</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; padding: 0; line-height: 1.5; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 32px 18px; }
+    h1 { margin: 0 0 6px; font-size: 28px; }
+    .sub { color: #444; margin: 0 0 18px; }
+    h2 { margin-top: 26px; font-size: 18px; }
+    ul { margin: 10px 0 0 18px; }
+    code, pre { background: #f6f6f6; padding: 2px 6px; border-radius: 6px; }
+    pre { padding: 12px; overflow: auto; }
+    .row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .card { border: 1px solid #e6e6e6; border-radius: 12px; padding: 14px; margin: 12px 0; flex: 1; min-width: 280px; }
+    .small { color: #555; font-size: 14px; margin-top: 8px; }
+    a { color: inherit; }
+    .pill { display: inline-block; padding: 6px 10px; border: 1px solid #e6e6e6; border-radius: 999px; margin-right: 8px; }
+    img { max-width: 100%; height: auto; border-radius: 12px; border: 1px solid #e6e6e6; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Resume API Build Log</h1>
+    <p class="sub">FastAPI on Linode, secured with Nginx and Cloudflare. Domain: dealapiops.dev.</p>
+
+    <div class="row">
+      <div class="card">
+        <h2>Links</h2>
+        <div class="small">
+          <div class="pill"><a href="https://api.dealapiops.dev/" target="_blank" rel="noreferrer">API root</a></div>
+          <div class="pill"><a href="https://api.dealapiops.dev/resume" target="_blank" rel="noreferrer">Resume JSON</a></div>
+          <div class="pill"><a href="https://api.dealapiops.dev/metrics" target="_blank" rel="noreferrer">Metrics</a></div>
+        </div>
+        <div class="small" style="margin-top:12px;">
+          GitHub: <a id="gh" href="#" target="_blank" rel="noreferrer">set this</a><br/>
+          LinkedIn: <a id="li" href="#" target="_blank" rel="noreferrer">set this</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Live counters</h2>
+        <div>Site visits: <span id="site_visits">loading</span></div>
+        <div>API calls: <span id="api_calls">loading</span></div>
+        <div class="small">Visits increment once per page load. API calls increment per request.</div>
+      </div>
+    </div>
+
+    <h2>Architecture</h2>
+    <p class="small">Client → Cloudflare → Linode → Nginx → FastAPI</p>
+    <img src="/architecture.png" alt="Architecture diagram" />
+
+    <h2>Security controls</h2>
+    <ul>
+      <li>FastAPI bound to 127.0.0.1 only</li>
+      <li>Nginx reverse proxy on 443</li>
+      <li>Cloudflare proxy enabled</li>
+      <li>Origin certificate installed</li>
+      <li>Cloudflare SSL mode Full strict</li>
+      <li>UFW restricts 80 and 443 to Cloudflare IP ranges only</li>
+      <li>Nginx rate limiting enabled</li>
+      <li>HSTS enabled</li>
+    </ul>
+
+    <h2>Copyable tests</h2>
+    <pre><code>curl -s https://api.dealapiops.dev/health
+curl -s https://api.dealapiops.dev/resume | head
+curl -s https://api.dealapiops.dev/metrics</code></pre>
+
+    <h2>Build steps</h2>
+    <ul>
+      <li>Provisioned Linode VM and applied updates</li>
+      <li>Built resume API using FastAPI and JSON Resume schema</li>
+      <li>Created systemd service for uptime and auto restart</li>
+      <li>Configured Nginx reverse proxy and HTTPS redirect</li>
+      <li>Configured Cloudflare DNS and Origin TLS</li>
+      <li>Restricted origin access to Cloudflare IP ranges only</li>
+      <li>Added rate limiting and HSTS</li>
+      <li>Added metrics endpoint for API call counts</li>
+    </ul>
+
+    <script>
+      const GITHUB_URL = "https://github.com/daz22";
+      const LINKEDIN_URL = "https://www.linkedin.com/in/drjeffreydeal/";
+
+      document.getElementById("gh").href = GITHUB_URL;
+      document.getElementById("gh").textContent = GITHUB_URL;
+
+      document.getElementById("li").href = LINKEDIN_URL;
+      document.getElementById("li").textContent = LINKEDIN_URL;
+
+      async function countVisit() {
+        try {
+          await fetch("https://api.dealapiops.dev/visit", { cache: "no-store" });
+        } catch (e) {}
+      }
+
+      async function loadMetrics() {
+        try {
+          const res = await fetch("https://api.dealapiops.dev/metrics", { cache: "no-store" });
+          const data = await res.json();
+          document.getElementById("site_visits").textContent = data.site_visits;
+          document.getElementById("api_calls").textContent = data.api_calls;
+        } catch (e) {
+          document.getElementById("site_visits").textContent = "error";
+          document.getElementById("api_calls").textContent = "error";
+        }
+      }
+
+      (async () => {
+        await countVisit();
+        await loadMetrics();
+      })();
+    </script>
+  </div>
+</body>
+</html>
